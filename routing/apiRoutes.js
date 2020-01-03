@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-let friends = require("../data/friends.js");
+let friends = require("../data/friends");
 
 router.get("/api/friends", (req, res) => {
-    res.json(friends);
+    res.send(friends);
 });
 
 router.post("/api/friends", (req, res) => {
