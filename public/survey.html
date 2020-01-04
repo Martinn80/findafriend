@@ -164,7 +164,7 @@
             </div>
         </footer>
     </div>
-    <div id="resultsModal" class="modal fade" role="dialog">
+    <div id="resultsModal" class="modal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -222,8 +222,21 @@
                 $.post(currentURL + "/api/friends", userData, function (data) {
                     $("#matchName").html(data.name);
                     $("#matchImg").attr("src", data.photo);
-                    $("#resultsModal").modal("toggle");
                 });
+                $(".modal").modal();
+
+                $('#name').val("");
+                $('#photo').val("");
+                $('#q1').val("");
+                $('#q2').val("");
+                $('#q3').val("");
+                $('#q4').val("");
+                $('#q5').val("");
+                $('#q6').val("");
+                $('#q7').val("");
+                $('#q8').val("");
+                $('#q9').val("");
+                $('#q10').val("");
             } else {
                 alert("Please fill out all fields before submitting!");
             }
