@@ -9,6 +9,9 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./CSS/style.css">
     <title>Friend Finder App</title>
 </head>
@@ -17,7 +20,7 @@
     <div class="container">
         <div class="jumbotron">
             <div class="Mntitle">
-                <h1>Meet Your Forever</h1>
+                <h1>Meet Your Match</h1>
             </div>
             <hr />
             <h2 class="Mntitle">
@@ -42,7 +45,7 @@
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5" selected>5 (Strongly Agree)</option>
+            <option value="5">5 (Strongly Agree)</option>
         </select>
 
         <h3><strong>Question 2</strong></h3>
@@ -51,7 +54,7 @@
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
-            <option value="3" selected>3</option>
+            <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5 (Strongly Agree)</option>
         </select>
@@ -63,7 +66,7 @@
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>4</option>
+            <option value="4">4</option>
             <option value="5">5 (Strongly Agree)</option>
         </select>
 
@@ -71,7 +74,7 @@
         <h4>I like animals</h4>
         <select data-placeholder="" class="chosen-select" id="q4">
             <option value=""></option>
-            <option value="1" selected>1 (Strongly Disagree)</option>
+            <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -82,22 +85,22 @@
         <h4>I like to go Camping</h4>
         <select data-placeholder="" class="chosen-select" id="q5">
             <option value=""></option>
-            <option value="1">1 (Strongly Disagree)</option>
+            <option value="1">1 (I Never Go)</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>4</option>
-            <option value="5">5 (Strongly Agree)</option>
+            <option value="4">4</option>
+            <option value="5">5 (I Go Regularly)</option>
         </select>
 
         <h3><strong>Question 6</strong></h3>
         <h4>How often do you follow through on what you say you will do?</h4>
         <select data-placeholder="" class="chosen-select" id="q6">
             <option value=""></option>
-            <option value="1">1 (No Camping)</option>
+            <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5" selected>5 (Regularly)</option>
+            <option value="5">5 (Strongly Agree)</option>
         </select>
 
         <h3><strong>Question 7</strong></h3>
@@ -105,7 +108,7 @@
         <select data-placeholder="" class="chosen-select" id="q7">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
-            <option value="2" selected>2</option>
+            <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5 (Strongly Agree)</option>
@@ -118,7 +121,7 @@
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>4</option>
+            <option value="4">4</option>
             <option value="5">5 (Strongly Agree)</option>
         </select>
 
@@ -129,7 +132,7 @@
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>4</option>
+            <option value="4">4</option>
             <option value="5">5 (Strongly Agree)</option>
         </select>
 
@@ -140,7 +143,7 @@
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>4</option>
+            <option value="4">4</option>
             <option value="5">5 (Strongly Agree)</option>
         </select>
         <br />
@@ -154,7 +157,7 @@
         <footer class="footer text-center">
             <div class="container">
                 <p>
-                    <a href="#">API Friends List</a> |
+                    <a href="/api/friends">API Friends List</a> |
                     <a href="https://github.com/Dcoxmen/friend-finder">GitHub Repo</a>
                     <br />
                 </p>
@@ -188,7 +191,7 @@
     <script type="text/javascript">
         $("#submit").on("click", function () {
             function validateForm() {
-                var isValid = true;
+                let isValid = true;
                 $(".form-control").each(function () {
                     if ($(this).val() === "") isValid = false;
                 });
@@ -197,8 +200,8 @@
                 });
                 return isValid;
             }
-            if (validateForm() == true) {
-                var userData = {
+            if (validateForm() === true) {
+                let userData = {
                     name: $("#name").val(),
                     photo: $("#photo").val(),
                     scores: [
@@ -214,9 +217,10 @@
                         $("#q10").val()
                     ]
                 };
-                var currentURL = window.location.origin;
+                let currentURL = window.location.origin;
+
                 $.post(currentURL + "/api/friends", userData, function (data) {
-                    $("#matchName").text(data.name);
+                    $("#matchName").html(data.name);
                     $("#matchImg").attr("src", data.photo);
                     $("#resultsModal").modal("toggle");
                 });
@@ -225,14 +229,9 @@
             }
             return false;
         });
+
     </script>
 
-
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,8 @@
 .jumbotron {
-    background: #929292;
+    background: #609ec7;
+}
+h1 {
+    font-size: 70px;
 }
 .logo {
     display: block;
